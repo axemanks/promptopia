@@ -1,4 +1,5 @@
 "use client";
+
 import Link from 'next/link';
 import Image from 'next/image'; // optimized image loading
 import { useState, useEffect } from 'react';
@@ -6,18 +7,19 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Nav = () => {
   const { data: session } = useSession(); // session data from auth
-  const [providers, setProviders] = useState(null); // auth providers
 
-  const [toggleDropdown, settoggleDropdown] = useState(false) // mobile nav
+  const [providers, setProviders] = useState(null); // hold auth providers
+  const [toggleDropdown, settoggleDropdown] = useState(false) // for mobile nav
 
 
-  // sign in with google
+  // set Provider (google only for now)
   useEffect(() => { 
     const setUpProviders = async () => { 
       const response = await getProviders();      
       setProviders(response);
-    }
+      }
     setUpProviders();
+    
   }, [])
 
   return (
@@ -62,7 +64,7 @@ const Nav = () => {
           </div>
         ) : (
             <>
-              {/* the following will show list of providers */}
+              {/* will show as list if more than 1 */}
               {providers &&
                 Object.values(providers).map((provider) => (
                   <button
@@ -71,7 +73,7 @@ const Nav = () => {
                     onClick={() => signIn(provider.id)}
                     className='black_btn'
                   >
-                    Sign In
+                    {provider.name}
                     
                 </button>
               ))}
@@ -122,7 +124,8 @@ const Nav = () => {
             )}
             </div>
         ) : (
-          <>
+            <>
+                            
            {providers &&
             Object.values(providers).map((provider) => (
               <button
@@ -131,7 +134,7 @@ const Nav = () => {
                 onClick={() => signIn(provider.id)}
                 className='black_btn'
               >
-                Sign In
+                {provider.name}
                 
             </button>
           ))}

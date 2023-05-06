@@ -24,8 +24,6 @@ const handler = NextAuth({
         await connectToDB();
 
         // check if user already exists
-          console.log(" profile.email ", profile.email); // TS login issue
-          console.log("profile.username", profile.username)
         const userExists = await User.findOne({ email: profile.email });
 
         // if not, create a new document and save user in MongoDB
