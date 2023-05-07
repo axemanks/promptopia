@@ -5,4 +5,7 @@ A community to share and discover prompts.
 npx create-next-app@latest ./
 npm install bcrypt mongodb mongoose next-auth
 
-5/6 2:48 - implement edit and delete calls and frontend
+# 2Do
+Other user profile is implemented
+- need to add handle click for user
+

@@ -22,11 +22,11 @@ const MyProfile = () => {
 
     if (session?.user.id) fetchPosts();
   }, [session?.user.id]);
-
+// Handle Edit
   const handleEdit = (post) => {
     router.push(`/update-prompt?id=${post._id}`);
   };
-
+// Handle Delete
   const handleDelete = async (post) => {
     const hasConfirmed = confirm(
       "Are you sure you want to delete this prompt?"
@@ -42,7 +42,7 @@ const MyProfile = () => {
 
         setMyPosts(filteredPosts);
       } catch (error) {
-        console.log(error);
+        console.log("Error deleting",error);
       }
     }
   };
