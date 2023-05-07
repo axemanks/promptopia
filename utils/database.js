@@ -10,6 +10,7 @@ export const connectToDB = async () => {
     return;
   }
 
+  // this try block is needed
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: "share_prompt",
@@ -19,8 +20,8 @@ export const connectToDB = async () => {
 
     isConnected = true;
 
-    console.log('MongoDB connected Now')
+    console.log('MongoDB is connected Now')
   } catch (error) {
-    console.log(error);
+    console.log("MongoDB connection Error:",error);
   }
 }

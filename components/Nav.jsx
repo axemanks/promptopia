@@ -64,6 +64,8 @@ const Nav = () => {
           </div>
         ) : (
             <>
+              {/* Desktop full screen */}
+               <h1 className="sign_in">Sign In With:</h1>
               {/* will show as list if more than 1 */}
               {providers &&
                 Object.values(providers).map((provider) => (
@@ -125,6 +127,7 @@ const Nav = () => {
             </div>
         ) : (
             <>
+             {/*  small */}
                             
            {providers &&
             Object.values(providers).map((provider) => (
